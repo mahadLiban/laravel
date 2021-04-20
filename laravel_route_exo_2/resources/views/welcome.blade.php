@@ -7,8 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>hi babe {{ $nom }} {{ $prenom }}</h1>
-    <a href={{ route  ("firstPage") }}> welcom</a>
-    
+    <h1>hello {{ $a }} {{ $b }}</h1>
 </body>
 </html>

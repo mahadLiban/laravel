@@ -34,7 +34,15 @@ Route::get("/",function(){
 
 Route::get("/welcom",function(){
     return view("welcom");
-});
+}) ->name("firstPage");
+
+
 Route::get("/about",function(){
     return view("about");
+});
+
+Route::get("/about",function(){
+    $nom = "Mahad";
+    $prenom = "Liban";
+    return view("about", compact("nom","prenom"));
 });
