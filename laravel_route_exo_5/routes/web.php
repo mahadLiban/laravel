@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use PhpParser\Node\Expr\Cast\String_;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,13 @@ Route::get('/', function () {
     ];
     return view('welcome',compact("personne"));
 });
+
+Route::get("/{number}", function($chiffre){
+    if (is_numeric($chiffre)) {
+        return view("chiffre", compact("chiffre"));
+    } else {
+        return view("404");
+    }
+});
+
+

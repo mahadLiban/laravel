@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 class="bg-success d-flex justify-content-center">hello guys i'm {{ $personne->prenom." ".$personne->nom. " ". "born on"." " .  $personne->dateDeNaissance ." ". "at"." ". $personne ->lieu }}</h1> 
+    <h1>error</h1>
 </body>
 </html>
