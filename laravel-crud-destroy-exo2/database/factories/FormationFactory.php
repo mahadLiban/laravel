@@ -1,0 +1,32 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Formation;
+use App\Models\Model;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class FormationFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Formation::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            "nom"=>$this->faker->firstName(),
+            "ndp"=>$this->faker->numberBetween(1,30),
+            "hcd"=>$this->faker->numberBetween(3,5),
+            "description"=>$this->faker->catchphrase()
+        ];
+    }
+}
