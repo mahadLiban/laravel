@@ -15,16 +15,16 @@ class AlbumSeeder extends Seeder
     public function run()
     {
         DB::table("albums")->insert([
-            "nom"=>"album1",
-            "description"=>"ceci est l'album1"
+            "nom"           =>"Album 1",
+            "description"   =>"Ceci est l'album1"
         ]);
         DB::table("albums")->insert([
-            "nom"=>"album2",
-            "description"=>"ceci est l'album2"
+            "nom"           =>"Album 2",
+            "description"   =>"Ceci est l'album2"
         ]);
         DB::table("albums")->insert([
-            "nom"=>"album3",
-            "description"=>"ceci est l'album3"
+            "nom"           =>"Album 3",
+            "description"   =>"Ceci est l'album3"
         ]);
     }
 }

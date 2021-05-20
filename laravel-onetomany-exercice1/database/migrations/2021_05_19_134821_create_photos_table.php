@@ -19,6 +19,7 @@ class CreatePhotosTable extends Migration
             $table->string('lien');
             $table->string('categorie');
             $table->string('description');
+            $table->foreignId("album_id")->constrained("albums");
             $table->timestamps();
         });
     }

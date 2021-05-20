@@ -15,8 +15,8 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $photos = Photo::paginate(2);
-        return view('backoffice.photo.all',compact("photos"))
+        $photos = Photo::paginate(0);
+        return view('backoffice.photo.all',compact("photos"));
     }
 
     /**
@@ -41,15 +41,17 @@ class PhotoController extends Controller
             "nom"=>"required",
             "lien"=>"required",
             "categorie"=>"required",
-            "description"=>"required"
+            "description"=>"required",
         ]);
+        $photo= new Photo();
         $photo->nom = $request->nom;
         $photo->lien = $request->file("lien")->hashName();
         $photo->categorie = $request->categorie;
         $photo->description = $request->description;
-        
+        $photo->album_id = $request->album_id;
         $photo->updated_at=now();
         $photo->save();
+        $request->file('lien')->storePublicly("img","public");
         return redirect()->route("photos.index")->with("message",'Vous avez bien créee une nouvelle photo: '." " . $photo->nom);
 
     }
@@ -97,8 +99,10 @@ class PhotoController extends Controller
         $photo->lien = $request->file("lien")->hashName();
         $photo->categorie = $request->categorie;
         $photo->description = $request->description;
+        $photo->album_id = $request->album_id;
         $photo->updated_at=now();
         $photo->save();
+        $request->file("lien")->storePublicly('img','public');
         return redirect()->route("photos.index")->with("message",'Vous avez bien modifié la photo: '." " . $photo->nom);
     }
 
@@ -110,7 +114,14 @@ class PhotoController extends Controller
      */
     public function destroy(Photo $photo)
     {
+        Storage::disk("public")->delete('img/'.$photo->lien);
         $photo->delete();
         return redirect()->back();
+    }
+
+    public function download($id){
+        $photo = Photo::find($id);
+
+        return Storage::disk("public")->download('img/'.$photo->lien);
     }
 }

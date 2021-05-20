@@ -14,7 +14,7 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        $albums = Album::paginate(2);
+        $albums = Album::paginate(0);
         return view('backoffice.album.all',compact("albums"));
     }
 
@@ -43,7 +43,8 @@ class AlbumController extends Controller
         $album = new Album();
         $album->nom = $request->nom;
         $album->description = $request->description;
-        $album->updated_at=now();
+        
+        $album->created_at=now();
         $album->save();
         return redirect()->route("albums.index")->with('message','Vous avez bien créée un nouveau album :' . $album->nom);
 
