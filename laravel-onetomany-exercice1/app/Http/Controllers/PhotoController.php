@@ -75,7 +75,7 @@ class PhotoController extends Controller
      */
     public function edit(Photo $photo)
     {
-        return view('backoffice.photo.edit',compact("photo"));
+        return view('backoffice.photo.edit',compact("photo","albums"));
 
     }
 

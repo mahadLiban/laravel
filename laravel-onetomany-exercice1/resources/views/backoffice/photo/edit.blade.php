@@ -30,9 +30,9 @@
             <div class="mb-3">
               <label class="form-label">album_id</label>
               <select name="album_id" id="">
-                  <option value=" 1">  1</option>
-                  <option value=" 2">  2 </option>
-                  <option value=" 3">  3</option>
+                  @foreach ($albums as $album)
+                      <option value="{{ $album->id }}>{{ $album->nom }}"></option>
+                  @endforeach
               </select>
           </div>        
             <div class="mb-3">
