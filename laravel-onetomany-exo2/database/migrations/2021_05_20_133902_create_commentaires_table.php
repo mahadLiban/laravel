@@ -20,6 +20,7 @@ class CreateCommentairesTable extends Migration
             $table->text("message");
             // date du commentaire
             $table->date("ddc");
+            $table->foreignId("article_id")->constrained("articles")->onDelete("cascade")->onUpdate("cascade");
             $table->timestamps();
         });
     }

@@ -55,7 +55,7 @@ class ArticleController extends Controller
         $article-> created_at = now();
         $article->save();
         $request->file("img")->storePublicly("img","public");
-        return redirect()->route("albums.index")->with('message','Vous avez bien créée un nouvelle article :' . $article->nom);
+        return redirect()->route("articles.index")->with('message','Vous avez bien créée un nouvelle article :' . $article->nom);
 
     }
 
@@ -109,7 +109,7 @@ class ArticleController extends Controller
         $article-> created_at = now();
         $article->save();
         $request->file("img")->storePublicly("img","public");
-        return redirect()->route("albums.index")->with('message','Vous avez bien créée un nouveau album :' . $article->nom);
+        return redirect()->route("articles.index")->with('message','Vous avez bien créée un nouveau album :' . $article->nom);
     }
 
     /**

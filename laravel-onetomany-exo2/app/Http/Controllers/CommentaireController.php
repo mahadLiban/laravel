@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Commentaire;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class CommentaireController extends Controller
      */
     public function create()
     {
-        return view("backoffice.commentaire.create");
+        $articles= Article::all();
+        return view("backoffice.commentaire.create",compact("articles"));
     }
 
     /**
@@ -40,12 +42,15 @@ class CommentaireController extends Controller
             "nom"=>"required",
             "mail"=>"required",
             "message"=>"required",
-            "ddc"=>"required"
+            "ddc"=>"required",
+            "article_id"=>"required"
+
         ]);
         $commentaire = new Commentaire();
         $commentaire->nom = $request->nom;
         $commentaire->mail = $request->mail;
         $commentaire->message = $request->message;
+        $commentaire->article_id = $request->article_id;
         $commentaire->ddc = $request->ddc;
         $commentaire->created_at = now();
         $commentaire-> save();
@@ -91,12 +96,14 @@ class CommentaireController extends Controller
             "nom"=>"required",
             "mail"=>"required",
             "message"=>"required",
-            "ddc"=>"required"
+            "ddc"=>"required",
+            "article_id"=>"required"
         ]);
         $commentaire = new Commentaire();
         $commentaire->nom = $request->nom;
         $commentaire->mail = $request->mail;
         $commentaire->message = $request->message;
+        $commentaire->article_id = $request->article_id;
         $commentaire->ddc = $request->ddc;
         $commentaire->created_at = now();
         $commentaire-> save();
